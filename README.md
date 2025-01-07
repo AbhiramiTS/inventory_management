@@ -1,6 +1,5 @@
 # Inventory Management System
 
-This project is an Inventory Management System built using Django. It provides various features for managing suppliers, products, sales orders, and stock movements.
 
 ## Features Included
 
@@ -72,8 +71,3 @@ You can filter products using the `ProductFilter` form available on the product 
 ### Stock Level Check
 - Implement a function to check and return the current stock level for each product.
 
-## Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/inventory-management.git
