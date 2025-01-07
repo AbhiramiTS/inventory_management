@@ -1,0 +1,60 @@
+<br>
+
+<div class="row">
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white mb-3" style="background-color: #e03c36;">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Products Out of Stock</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h1 class="card-title">{{ out_of_stock_count }}</h1>
+				  </div>
+                  <h6><a href="{% url 'list_products' %}">View Products</a></h6>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white mb-3" style="background-color: #221fb6;">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Total Products</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h1 class="card-title">{{ total_products }}</h1>
+				  </div>
+				  <h6><a href="{% url 'list_products' %}">View Products</a></h6>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white mb-3" style="background-color: #23b848;">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Total Suppliers</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h1 class="card-title">{{ total_suppliers }}</h1>
+				  </div>
+				  <h6><a href="{% url 'list_suppliers' %}">View Suppliers</a></h6>
+			</div>
+		</div>
+	</div>
+
+<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white mb-3" style="background-color: #dcdf46;">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Total Sales Order</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h1 class="card-title">{{ total_sales_orders }}</h1>
+				  </div>
+				  <h6><a href="{% url 'list_sale_orders' %}">View Sales Orders</a></h6>
+			</div>
+		</div>
+	</div>
+</div>
+

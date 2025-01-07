@@ -1,0 +1,98 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+
+	<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Supplier: {{supplier.name}}</h5>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'update_supplier' supplier.id %}">Update Supplier</a>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Contact Information</h5>
+			<hr>
+			<p>Email: {{supplier.email}}</p>
+			<p>Phone: {{supplier.phone}}</p>
+			<p>Address: {{supplier.address}}</p>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Total Products</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px">{{total_products}}</h1>
+		</div>
+	</div>
+</div>
+
+<br>
+		<div id="accordion">
+			<div class="card">
+				<div class="card-header" id="headingTwo">
+					<h5 class="mb-0">
+						<h5>Total Number of Products: {{ total_products }}</h5>
+						<button class="btn btn-link collapsed btn btn-success "
+							style="color: white; text-decoration: none;" data-toggle="collapse"
+							data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							Apply Filters
+						</button>
+					</h5>
+				</div>
+				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+					<div class="card-body">
+
+						<div class="row">
+							<div class="col">
+								<div class="card card-body">
+									<form method="get">
+										{{myFilter.form}}
+										<button class="btn btn-primary" type="submit">Search</button>
+									</form>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>No</th>
+					<th>Product Name</th>
+					<th>Category</th>
+					<th>Price</th>
+					<th>Stock Quantity</th>
+					<th>Description</th>
+					<th>Update</th>
+				</tr>
+
+				{% for product in supplier_products %}
+					<tr>
+						<td>{{ forloop.counter }}</td>
+						<td>{{product.name}}</td>
+						<td>{{product.category}}</td>
+						<td>{{product.price}}</td>
+						<td>{{product.stock_qty}}</td>
+						<td>{{product.description}}</td>
+						<td><a class="btn btn-sm btn-info" href="{% url 'edit_product' product.id %}">Update</a></td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

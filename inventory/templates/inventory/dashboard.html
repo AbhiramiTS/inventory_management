@@ -1,0 +1,79 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+
+{% include 'inventory/status.html' %}
+
+<br>
+<br>
+
+<div class="row">
+	<div class="col-md-5">
+		<h5>SUPPLIERS:</h5>
+		<hr>
+		<div class="card card-body">
+			<!-- <a class="btn btn-primary  btn-sm btn-block" href="">Create Supplier</a> -->
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+					<th>Supplier</th>
+					<th>Phone</th>
+				</tr>
+
+				{% for supplier in suppliers|slice:"9" %}
+					<tr>
+						<td><a class="btn btn-sm btn-info" href="{% url 'supplier' supplier.id %}">View</a></td>
+						<td>{{supplier.name}}&nbsp;</td>
+						<td>{{supplier.phone}}&nbsp;</td>
+					</tr>
+				{% endfor %}
+				
+			</table>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'list_suppliers' %}">View All Suppliers</a>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>LAST 10 SALES ORDERS</h5>
+		<hr>
+		<div class="card card-body">
+			
+			<table class="table table-sm">
+				<tr>
+                    <th>&nbsp;&nbsp;&nbsp;</th>
+					<th>Product</th>
+					<th>Quantity</th>
+					<th>Price</th>
+					<th>Date Ordered</th>
+					<th>Status</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+
+				{% for sale_order in sales_orders|slice:"10" %}
+					<tr>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
+						<td>{{sale_order.product}}&nbsp;</td>
+						<td>{{sale_order.quantity}}&nbsp;</td>
+						<td>{{sale_order.total_price}}&nbsp;</td>
+						<td>{{sale_order.sale_date}}&nbsp;</td>
+						<td>{{sale_order.status}}&nbsp;</td>
+						<td><a class="btn btn-sm btn-info" href="{% url 'complete_sale_order' sale_order.id %}">Complete&nbsp;</a></td>
+
+						<td><a class="btn btn-sm btn-danger" href="{% url 'cancel_sale_order' sale_order.id %}">Cancel&nbsp;</a></td>
+
+					</tr>
+				{% endfor %}
+
+		
+			</table>
+		</div>
+	</div>
+
+</div>
+
+<br>
+<br>
+	
+
+{% endblock %}
