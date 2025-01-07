@@ -128,7 +128,10 @@ def add_product(request):
 
 # List Products View
 def list_products(request):
-    products = Product.objects.select_related('supplier').all()
+    if request.GET.get('out_of_stock') == 'true':
+        products = Product.objects.filter(stock_qty=0)
+    else:
+        products = Product.objects.select_related('supplier').all()
     product_filter = ProductFilter(request.GET, queryset=products)
     return render(request, 'inventory/list_products.html', {'products': products, 'filter':product_filter})
 
